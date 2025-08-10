@@ -1,1 +1,11 @@
-{% extends 'base.html' %}{% block content %}<p>{{ feedback }}</p>{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Feedback | Salesforce Admin Trainer{% endblock %}
+{% block content %}
+  <h2>Answer Feedback</h2>
+  <div class="card">
+    <p class="feedback">{{ feedback }}</p>
+    <p>The correct answer is: <strong>{{ correct_answer }}</strong></p>
+    {% if explanation %}<p>{{ explanation }}</p>{% endif %}
+    <a class="btn" href="/quiz?q={{ next_index }}">Next question</a>
+  </div>
+{% endblock %}

@@ -1,1 +1,29 @@
-{% extends 'base.html' %}{% block title %}Home{% endblock %}{% block content %}<h1>Home</h1>{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Home | Salesforce Admin Trainer{% endblock %}
+{% block home_active %}class="active"{% endblock %}
+{% block content %}
+  <h1>Salesforce Admin Trainer</h1>
+  <div class="card">
+    <p>Prepare for the Salesforce Administrator certification with interactive quizzes, daily activity tracking, and study resources.</p>
+    <ul>
+      <li>60 scored questions in the real exam, 105 minutes, 65% passing.</li>
+      <li>Seven domains with weights (e.g., Configuration & Setup 20%).</li>
+      <li>Immediate feedback per question + explanations.</li>
+      <li>Daily tracker with a chart to build consistency.</li>
+    </ul>
+    <a class="btn" href="/quiz">Start Quiz</a>
+  </div>
+
+  <div class="card">
+    <h3>Exam Topics</h3>
+    <ul>
+      <li>Configuration & Setup (20%)</li>
+      <li>Object Manager & Lightning App Builder (20%)</li>
+      <li>Sales & Marketing Applications (12%)</li>
+      <li>Service & Support Applications (11%)</li>
+      <li>Workflow & Process Automation (16%)</li>
+      <li>Data & Analytics Management (14%)</li>
+      <li>Productivity & Collaboration (7%)</li>
+    </ul>
+  </div>
+{% endblock %}

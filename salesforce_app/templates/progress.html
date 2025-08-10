@@ -1,1 +1,41 @@
-{% extends 'base.html' %}{% block content %}<h1>Progress</h1>{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Progress | Salesforce Admin Trainer{% endblock %}
+{% block progress_active %}class="active"{% endblock %}
+{% block content %}
+  <h2>Study Progress</h2>
+  <div class="card">
+    <p>Total questions answered: <strong>{{ total_answered }}</strong></p>
+    {% if progress_items %}
+      <table class="progress-table">
+        <thead><tr><th>Date (UTC)</th><th>Answered</th></tr></thead>
+        <tbody>
+          {% for d, c in progress_items %}
+            <tr><td>{{ d }}</td><td>{{ c }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div style="margin-top: 1rem;">
+        <canvas id="activityChart" height="120"></canvas>
+      </div>
+    {% else %}
+      <p>No activity yet — start a quiz and come back!</p>
+    {% endif %}
+    <div style="margin-top: 1rem;">
+      <a class="btn" href="/quiz">Go to Quiz</a>
+    </div>
+  </div>
+
+  {% if progress_items %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labels = {{ progress_items | map(attribute=0) | list | tojson }};
+    const values = {{ progress_items | map(attribute=1) | list | tojson }};
+    const ctx = document.getElementById('activityChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Questions answered', data: values }] },
+      options: { responsive: true, scales: { y: { beginAtZero: true } } }
+    });
+  </script>
+  {% endif %}
+{% endblock %}

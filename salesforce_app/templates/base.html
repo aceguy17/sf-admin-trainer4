@@ -1,1 +1,35 @@
-<!DOCTYPE html><html><head><title>{% block title %}{% endblock %}</title></head><body>{% block content %}{% endblock %}</body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Salesforce Admin Trainer{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <div>
+            <a href="/" {% block home_active %}{% endblock %}>Home</a>
+            <a href="/quiz" {% block quiz_active %}{% endblock %}>Quiz</a>
+            <a href="/progress" {% block progress_active %}{% endblock %}>Progress</a>
+          </div>
+          <div>
+            <a href="/download-progress">Download Progress</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 Salesforce Admin Trainer. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
